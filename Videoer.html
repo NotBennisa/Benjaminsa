@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videoer</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body{
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            font-family: Libre Caslon Condensed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            background-color: #bebeb8;
+            color: #0f0f0f;
+        }
+
+        h1{
+            font-size: 30px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .container{
+            width: 100%;
+            padding: 0 2em;
+        }
+
+        .container .item{
+            width: 100%;
+            padding: 0.125em 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 80px;
+            border-bottom: 2px solid ;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+        }
+
+        .container .word{
+            margin: -10px;
+        }
+        .item:nth-child(1){
+            border-top: 2px solid #0f0f0f;
+        }
+
+        .img{
+            max-width: 125px;
+            height: 80px;
+            background-color: #0f0f0f;
+            transition: all .7s cubic-bezier(0.075, 0.82, 0.165, 1);
+            overflow: hidden;
+            flex: 0;
+        }
+
+        img{
+            width: 125px;
+            height: auto;
+            object-fit: cover;
+        }
+        .item:hover{
+            gap: 20px;
+        }
+
+        .item:hover .img{
+            flex: 0.5;
+        }
+
+        .w1{
+            text-align: right;
+        }
+
+        .prev {
+            position: fixed;
+            top: 15px;
+            left: 50px;
+            width: 2rem;
+            height: auto;
+            stroke: #0f0f0f;
+            cursor: pointer;
+            transform: scale(2);
+        }
+        a{text-decoration: none; color: #0f0f0f;}
+    </style>
+</head>
+<body>
+
+    <div class="prev">
+        <a href="index.html?skipAnimation=true">
+            <svg viewBox="0 0 50 9"><path d="m0 4.5 5-3m-5 3 5 3m45-3h-77"></path></svg>
+        </a>
+    </div>
+
+    <h1>Projekter</h1>
+    <div class="container">
+        <a href="Straden.html">
+            <div class="item item-1">
+                <div class="word w1">Stra</div>
+                <div class="img"><img src="Billeder/Yea.jpg" alt=""></div>
+                <div class="word w2">nden</div>
+            </div>
+        </a>
+        <a href="">
+            <div class="item item-2">
+                <div class="word w1">Night</div>
+                <div class="img"><img src="Yea.jpg" alt=""></div>
+                <div class="word w2">crawler</div>
+            </div>
+        </a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const items = document.querySelectorAll(".item");
+
+            items.forEach((item) => {
+                item.addEventListener("mouseenter", shuffleAnimation);
+            });
+        });
+
+        function getRandomCharacter() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            return chars[Math.floor(Math.random() * chars.length)];
+        }
+
+        function shuffleAnimation(event) {
+            const target = event.currentTarget;
+            const words = target.querySelectorAll(".word");
+
+            if (target.dataset.animating) {
+                return;
+            }
+
+            target.dataset.animating = true;
+
+            const originalWords = Array.from(words).map((word) => word.textContent);
+
+            let shuffles = 0;
+            const maxShuffles = 5;
+            const intervalDur = 500 / maxShuffles;
+
+            let animationInterval = setInterval(() => {
+                if (shuffles >= maxShuffles) {
+                    clearInterval(animationInterval);
+                    words.forEach((word, index) => {
+                        word.textContent = originalWords[index];
+                    });
+
+                    delete target.dataset.animating;
+                } else {
+                    words.forEach((word, index) => {
+                        const length = word.textContent.length;
+                        let shuffledText = "";
+                        for (let i = 0; i < length; i++) {
+                            shuffledText += getRandomCharacter();
+                        }
+                        word.textContent = shuffledText;
+                    });
+                    shuffles++;
+                }
+            }, intervalDur);
+        }
+    </script>
+</body>
+</html>
