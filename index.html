@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Young+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Young+Serif&family=PT+Seri&display=swap" rel="stylesheet">
 
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
@@ -232,7 +232,7 @@
             color: #0f0f0f;
             position: absolute;
             top: 130%;
-            width: 80%;
+            max-width: 80%;
         }
         .middletext a{
             color: var(--blue);
@@ -384,7 +384,7 @@
             display: flex;
             align-items: flex-start;
             gap: 1rem;
-            background-color: #ffffff;
+            background-color: #0f0f0fBF;
             border-radius: 0.2rem;
             padding: 2rem 1.5rem;
             position: fixed;
@@ -395,32 +395,111 @@
             z-index: 1000;
             display: none;
             opacity: 0;
+            font-family: "Young Serif";
         }
-
-        .popup > h3 {
+        .popup{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup h3 {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #404656;
+            color: var(--white);
+            font-family: "PT Serif";
         }
 
-        .popup > p {
+        .popup p{
             font-size: 0.8rem;
             font-weight: 500;
             line-height: 1.2rem;
-            color: #666b78;
-            margin-top: 0.5rem;
-            position: relative;
-            top: 50px;
+            color: var(--white);
+            padding: 0 20px;
         }
         .popup a{
-            font-family: "Young Serif";
             font-size: 0.8rem;
             font-weight: 500;
             line-height: 1.2rem;
-            color: #666b78;
-            margin-top: 0.5rem;
-            position: relative;
-            top: 60px;
+            color: var(--white);
+            margin-top: 150px;
+        }
+
+
+        /* --------------------------------------------- Mobile Nav --------------------------------------------------------- */
+        .nav div{
+            background-color: var(--black);
+            height: 5px;
+            margin: 5px 0;
+            border-radius: 1px;
+            transition: .3s;
+            z-index: 1;
+        }
+        .nav {
+            display: block;
+            width: 40px;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: 9999;
+        }
+        .one{width: 40px;}
+        .two{width: 20px;}
+        .three{width: 30px;}
+
+        .nav:hover div{
+            width: 40px;
+            background-color: #535353;
+        }
+        .mobile-nav{
+            position: fixed;
+            height: 100vh;
+            width: 100%;
+            background-color: var(--black);
+            color: var(--white);
+            transform: translateX(-500px);
+            display: none;
+            transition: transform .8s ease-in-out;
+            z-index: 9999999;
+        }
+        .tekst{
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           position: relative;
+           top: 30%;
+        }
+        .tekst a{
+            color: var(--blue);
+            font-size: 36px;
+            font-family: "Young Serif";
+            text-decoration: none;
+            margin-bottom: 100px;
+            transition: color .2s ease-in-out;
+        }
+        .tekst a:hover{
+            color: var(--red);
+        }
+        .close{
+            font-family: "PT Serif";
+            font-size: 50px;
+            background: none;
+            border: none;
+            color: var(--white);
+            padding: 0;
+            cursor: pointer;
+            text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+            transition: opacity 3s;
+            position: absolute;
+            top: 12px;
+            right: 40px;
+        }
+        .close:hover{
+            color: #e1e1e1;
         }
 
         /* ----------------------------------- MEDIA QUERIES --------------------------------------------------- */
@@ -428,7 +507,7 @@
         @media screen and (max-width: 1024px) {
             body {
                 overflow-x: hidden;
-                overflow-y: auto;
+                max-width: 100%;
             }
             .main_circle_text{
                 fill: var(--blue);
@@ -505,7 +584,11 @@
             }
             
         }
-
+        @media screen and (max-width: 640px) {
+            .menu-link{
+                display: none;
+            }
+        }
         @media screen and (max-width: 500px) {
             /* Adjust the container size for smaller screens */
             .circle-button{
@@ -522,11 +605,7 @@
                 width: 450px;
                 padding-top: 60px;
                 font-size: 40px;
-            }
-            .menu-link{
-                display: none;
-            }
-            
+            }            
             .line{
                 left: 30px;
             }
@@ -572,8 +651,7 @@
             }
             .jesus{
                 margin-top: -8px;
-            }
-            
+            }  
         }
         @media screen and (max-width: 415px) {
             .menu-left{margin-left: 1em;}
@@ -618,7 +696,7 @@
                 margin-top: 13px;
             }
             .omg2{
-                margin-top: 22px;
+                margin-top: 28px;
             }
             .omg3{
                 margin-top: -5px;
@@ -677,7 +755,11 @@
             }
             #først{
                 max-width: 220px;
-                margin-left: -30px;
+                margin-left: -6px;
+                padding-top: 70px;
+            }
+            .omg{
+                margin-top: 100px;
             }
             .omg1{
                 margin-top: 40px;
@@ -693,8 +775,14 @@
             }
             #forlang{
                 white-space: normal;
-                max-width: 100px;
+                max-width: 40px;
                 font-size: 16px;
+            }
+            .content a{
+                margin-left: -6px;
+            }
+            .wth{
+                margin-top: 20px;
             }
         }
 
@@ -727,15 +815,23 @@
     </style>
 </head>
 <body>
+    <a href="#" class="nav">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+    </a>
+    <div class="mobile-nav">
+        <button class="close">x</button>
+        <div class="tekst">
+            <a href="Billeder.html">Billeder</a>
+            <a href="Videoer.html">Videoer</a>
+        </div>
+    </div>
     <div class="popup-card">
         <div class="popup">
           <h3>Hej Benjamin her.</h3>
-          <p>
-            Den her hjemmeside er oprindeligt bygget til computere, så hvis du ser nogle fejl, så please skriv på:
-          </p>
-            <a href="mailto:bensvenning@gmail.com">
-                bensvenning@gmail.com
-            </a>
+          <p>Den her hjemmeside er oprindeligt bygget til større skærme, så hvis du ser nogle fejl, så venligst skriv på:</p>
+          <a href="mailto:bensvenning@gmail.com">bensvenning@gmail.com</a>
         </div>
     </div>
     <div class="container">
@@ -829,7 +925,7 @@
                     <p class="sh3 lol omg2">Kirstinebjerskolen afdeling Havepladsvej.<br>Jeg startede på linjen Art og Udtryk i 7. klasse, men skiftede til Design og Teknik i 9. klasse.</p>
                 </div>
             </div>
-            <div class="section">
+            <div class="section wth">
                 <div class="bead bead-h3"></div>
                 <div class="content">
                     <h3>Gymnasiel Uddannelse</h3>
@@ -990,11 +1086,14 @@
         }
 
         const elementToFadeIn = document.querySelector(".circle-button");
+        const navLink = document.querySelector(".nav");
         const skipAnimationParam = getQueryParam("skipAnimation");
         if (skipAnimationParam === "true") {
             const boxElement = document.querySelector(".box");
             boxElement.style.opacity = 0;
             elementToFadeIn.style.opacity = 1;
+            navLink.style.display = "block";
+            navLink.style.opacity = 1;
             TweenMax.to(".left", 1.4, {
                 x: "-400",
                 rotation: -10,
@@ -1007,14 +1106,18 @@
                 ease: Expo.easeInOut,
             });
 
-
-
         } else {
 
             document.addEventListener("DOMContentLoaded", function() {
                 
                 setTimeout(function() {
+                    if (window.innerWidth <= 640) {
+                        navLink.style.display = "block"
+                    }
+                }, 5990);
+                setTimeout(function() {
                     elementToFadeIn.style.opacity = 1;
+                    navLink.style.opacity = 1;
                 }, 6000);
             });
 
@@ -1180,6 +1283,39 @@
 
 
         window.onload = showPopup();
+
+
+        // ------------------------------ mobil nav ------------------------------
+        const mobileNav = document.querySelector(".mobile-nav");
+        const closeButton = document.querySelector(".close");
+
+        let menuOpen = false;
+
+        function openMenu() {
+            mobileNav.style.transform = "translateX(0px)";
+            mobileNav.style.display = "block";
+            textWrapper.style.display = "none";
+            menuOpen = true;
+        }
+
+        function closeMenu() {
+            mobileNav.style.transform = "translateX(-500px)";
+            mobileNav.style.display = "none";
+            textWrapper.style.display = "block";
+            menuOpen = false;
+        }
+
+        navLink.addEventListener("click", () => {
+            if (!menuOpen) {
+                openMenu();
+            } else {
+                closeMenu();
+            }
+        });
+
+        closeButton.addEventListener("click", () => {
+            closeMenu();
+        });
         
     </script>
 
