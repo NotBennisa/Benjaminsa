@@ -205,7 +205,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 99;
+            z-index: 999;
             opacity: 0;
             transition: opacity 5s ease;
             pointer-events: none;
@@ -1091,8 +1091,10 @@
             const boxElement = document.querySelector(".box");
             boxElement.style.opacity = 0;
             elementToFadeIn.style.opacity = 1;
-            navLink.style.display = "block";
-            navLink.style.opacity = 1;
+            if (window.innerWidth <= 640) {
+                navLink.style.display = "block";
+                navLink.style.opacity = 1;
+            }
             TweenMax.to(".left", 1.4, {
                 x: "-400",
                 rotation: -10,
