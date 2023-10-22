@@ -76,6 +76,47 @@
             cursor: pointer;
             transform: scale(2);
         }
+
+        @media screen and (max-width: 1024px){
+            video{
+                width: 500px;
+            }
+            .text p{
+                max-width: 300px;
+            }
+        }
+        @media screen and (max-width: 1000px){
+            .wraper{
+                flex-direction: column;
+                align-items: center;
+            }
+            video{
+                margin-top: 25px;
+            }
+        }
+        @media screen and (max-width: 600px){
+            video{
+                width: 400px;
+            }
+            .text p{
+                max-width: 300px;
+            }
+            .title h1{
+                font-size: 46px;
+            }
+            .prev{
+                stroke: crimson;
+                width: 3rem;
+            }
+        }
+        @media screen and (max-width: 415px){
+            .title h1{
+                font-size: 38px;
+            }
+            video{
+                width: 300px;
+            }
+        }
     </style>
 
 </head>
@@ -90,13 +131,13 @@
     </div>
     <div class="videosted">
         <div class="wraper">
+            <div class="video">
+                <video controls>
+                    <source src="strand.mov" type="video/mp4">
+                </video>
+            </div>
             <div class="text">
                 <p id="app"></p>
-            </div>
-            <div class="video">
-                <video controls autoplay>
-                    <source src="Strand.mp4" type="video/mp4">
-                </video>
             </div>
         </div>
     </div>
