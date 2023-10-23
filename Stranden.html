@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stranden</title>
+
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Young+Serif&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            max-height: 100vh;
+            width: 100%;
+            background-color: #bebeb8;
+            color: #0f0f0f;
+        }
+        .title{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height:10%;
+            border-bottom: 2px solid;
+            display: flex;
+            justify-content: center;
+        }
+        .title h1{
+            font-size: 64px;
+            margin: 0;
+            padding: 0;
+            font-family: "Dela Gothic One";
+        }
+        .videosted{
+            position: absolute;
+            top: 10%;
+            width: 100%;
+            height: 90%;
+        }
+        .wraper{
+            width: 90%;
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+        }
+        .text  {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .text p{
+            font-size: 30px;
+            text-align: center;
+            max-width: 500px;
+        }
+        .video{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        video{
+            width: 700px;
+        }
+        .prev {
+            position: fixed;
+            top: 15px;
+            left: 50px;
+            width: 2rem;
+            height: auto;
+            stroke: #0f0f0f;
+            cursor: pointer;
+            transform: scale(2);
+        }
+
+        @media screen and (max-width: 1024px){
+            video{
+                width: 500px;
+            }
+            .text p{
+                max-width: 300px;
+            }
+        }
+        @media screen and (max-width: 1000px){
+            .wraper{
+                flex-direction: column;
+                align-items: center;
+            }
+            video{
+                margin-top: 25px;
+            }
+        }
+        @media screen and (max-width: 600px){
+            video{
+                width: 400px;
+            }
+            .text p{
+                max-width: 300px;
+            }
+            .title h1{
+                font-size: 46px;
+            }
+            .prev{
+                stroke: crimson;
+                width: 3rem;
+            }
+        }
+        @media screen and (max-width: 415px){
+            .title h1{
+                font-size: 38px;
+            }
+            video{
+                width: 300px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="title">
+        <h1>STRANDEN</h1>
+    </div>
+    <div class="prev">
+        <a href="Videoer.html">
+            <svg viewBox="0 0 50 9"><path d="m0 4.5 5-3m-5 3 5 3m45-3h-77"></path></svg>
+        </a>
+    </div>
+    <div class="videosted">
+        <div class="wraper">
+            <div class="video">
+                <video controls>
+                    <source src="strand.mov" type="video/mp4">
+                </video>
+            </div>
+            <div class="text">
+                <p id="app"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var app = document.getElementById('app');
+
+        var typewriter = new Typewriter(app, {
+        loop: false,
+        delay: 75
+        });
+
+        typewriter
+        .pauseFor(1500)
+        .typeString('Stranden er en lille montage af klip fra en tur til Strib fyr, som jeg optog for at eksperimentere med mit nye kamera.')
+        .pauseFor(3000)
+        .typeString(" Jeg havde lige købt et Sony FX30 brugt, og som det kan ses, var der desværre et fingeraftryk på sensoren.")
+        .pauseFor(10000)
+        .start();
+    </script>
+</body>
+</html>
